@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:background="#605C70">
+
+    <ImageView
+        android:id="@+id/vIcon"
+        android:layout_width="@dimen/sbol_kz_cm_icon_size"
+        android:layout_height="@dimen/sbol_kz_cm_icon_size"
+        android:layout_marginStart="@dimen/sbol_kz_cm_icon_margin"
+        app:layout_constraintLeft_toRightOf="@+id/vTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_arrow_right_24"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/vTitle"
+        style="@style/sberdevices_body_1.default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sberdevices_spacer_4x"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Оплата на счет" />
+
+    <TextView
+        android:id="@+id/vDescription"
+        style="@style/sberdevices_body_1.default"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/sberdevices_spacer_4x"
+        android:layout_marginTop="@dimen/sberdevices_spacer_5x"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vTitle"
+        tools:text="12 400 ₸" />
+
+    <TextView
+        android:id="@+id/vPayButton"
+        style="@style/sberdevices_body_1.default"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/sbol_kz_cm_button_height"
+        android:paddingStart="@dimen/sberdevices_spacer_4x"
+        android:background="@drawable/bg_rounded_button"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:gravity="center"
+        android:text="@string/custom_message_pay"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vDescription"
+        tools:text="Оплатить"
+        tools:ignore="RtlSymmetry" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

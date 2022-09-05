@@ -1,0 +1,113 @@
+# Please copy this to the header of any CODEOWNERS file.
+# _______________________________________________________
+# WHO IS WHO:
+# @19079750 			 - Никитин Антон Игоревич
+# @19089726 			 - Федотов Иван Евгеньевич
+# @19082358 			 - Соколов Алексей Владимирович
+# @19710688 			 - Косяков Станислав Валеьревич
+# @19077686				 - Шабанов Владимир Юрьевич
+# @19669847 			 - Шипунов Георгий Дмитриевич
+# @19272663              - Подшиблов Александр Александрович
+
+
+#Settings:
+    CODEOWNERS.toplevel.create_pull_request_comment enable
+    CODEOWNERS.toplevel.subdirectory_overrides enable
+    CODEOWNERS.destination_branch_pattern develop
+
+    #For each merge-checks CODEOWNERS file, the setting is determined individually. Default: OverallCheck(1)
+    OverallCheck(1)
+
+
+#Define dev + deputy
+    @@@Nikitin      @19079750 @19089726
+    @@@Fedotov      @19089726 @19079750 @19082358 @19077686
+    @@@Sokolov      @19082358 @19089726
+    @@@Kosyakov     @19710688 @19089726
+    @@@Shabanov     @19077686 @19089726
+    @@@Shipunov     @19669847 @19089726
+    @@@Podshiblov   @19669847 @19089726
+
+#Define groups codeowners:
+    @@@Messenger            @19079750 @19089726 @19082358 @19710688 @19077686 @19669847 @19272663
+
+#CODEOWNERS owners:
+    CODEOWNERS              @@Fedotov
+
+# _______________________________________________________
+
+
+
+############ Module owners:
+
+*					    @@Shabanov @@Sokolov
+
+
+
+
+# ______________________INSTRUCTION______________________
+
+# Переведем на русский, если поймем CODEOWNERS плагин нам действительно нужен. Пока trial режим.
+# Examples:
+
+# Suppress info comment on pull request creation about added code owners. Info comment will be added by default.
+# CODEOWNERS.toplevel.create_pull_request_comment disable
+
+# Enables subdirectories overrides, where a CODEOWNERS file in a subdirectory overrides all settings
+# Ideal when you have independent projects in subdirectories which require independent rules
+# By default this is disabled and only the CODEOWNERS at the top of the repository is used
+# CODEOWNERS.toplevel.subdirectory_overrides enable
+
+# Every rule line is a file pattern that is followed by one or more code owners.
+
+# This user will be the default owner for everything in the repo.
+# *                        @IvanTheHacker
+
+# Ordering is important! The last matching file pattern has the highest precedence.
+# So if only a Java file is in the pull request, IvanTheJavaExpert is the code owner
+# and not the default owner IvanTheHacker.
+# *.java                   @IvanTheJavaExpert
+
+# You can also use Bitbucket groups which start with '@@' compared to single users.
+# This will add all members of the Bitbucket group JSExperts.
+# *.js                     @IlyaTheJSguru @@JSExperts
+
+# If you want, you can define your own code owner groups instead of using Bitbucket groups.
+# This will define a new group GodDevs, both including users and other groups:
+# @@@GodDevs                @IvanTheHacker  @IvanTheJavaExpert IEFedotov@sberbank.ru @@JSDevs
+
+# For Bitbucket users and groups with spaces in their name, put them into double quotes.
+# *.ts                     @"Paul the JSGuru" @@"Dev Ops Team"
+
+# You can also specify code owners by email address if you prefer:
+# docs/*                   docs@example.com
+
+# When your glob expression contains spaces, put the glob into double quotes.
+# "a/path with spaces/*"   docs@example.com
+
+# AnnTheScalaPro is the code owner of all files in the /src/main/scala directory at
+# the root and all its descendants (e.g., /src/main/scala/com/x/y/z.scala).
+# /src/main/scala/         @AnnTheScalaPro
+
+# ci/* will match all files in the directory ci, but not deeper in
+# the directory hierarchy (so ci/jobs/prod.yml will not match).
+# ci/*                     @devops
+
+# You can use '!' for negation in front of file pattern without any code owners afterwards,
+# to unset all previously defined code owners of the files.
+# e.g. devops group wants to review everything under ci (as defined above),
+# except ci/playgrounds.yml, which nobody needs to review:
+# !ci/playgrounds.yml
+
+# It's also possible to use double-asterisk globs. Here's an example that will match
+# all JS files under /src/components.
+#src/components/**/*.js   @@GodDevs
+
+# AndreyGroovyMaster owns any files in the groovy directory anywhere in the
+# file tree (e.g., src/main/groovy/com/x/y/z.groovy).
+# groovy/                  @AndreyGroovyMaster
+
+# Files starting with a `#` or a `!` can still be used by escaping them.
+# \#myfile.rb              @IvanTheHacker
+# \!yourfile.rb            @IlyaTheJSguru
+ 

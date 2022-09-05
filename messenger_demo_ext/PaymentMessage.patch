@@ -1,0 +1,88 @@
+Index: android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt b/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt
+--- a/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt	(revision 059790ebc59cf5524cf15cf381f8e85874611ee3)
++++ b/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt	(date 1658479735138)
+@@ -27,6 +27,7 @@
+ import im.dlg.platform.featureflag.data.FeatureFlag
+ import org.json.JSONObject
+ import java.util.Locale
++import java.util.Random
+
+ sealed class MessageContent {
+     object UnknownContent : MessageContent()
+@@ -384,12 +385,13 @@
+ ): MessageContent {
+     return when {
+         messageContent.hasTextMessage() -> {
+-            val mediaList = messageContent.textMessage.mediaList
+-            if (mediaList.isNotEmpty() && mediaList.first().hasAudio()) {
+-                MessageContent.VoiceContent(messageContent.textMessage, voiceContentPayload)
+-            } else {
+-                MessageContent.TextContent(messageContent.textMessage, messageContent.overrides)
+-            }
++            MessageContent.JsonContent(generateStaticJson())
++            // val mediaList = messageContent.textMessage.mediaList
++            // if (mediaList.isNotEmpty() && mediaList.first().hasAudio()) {
++            //     MessageContent.VoiceContent(messageContent.textMessage, voiceContentPayload)
++            // } else {
++            //     MessageContent.TextContent(messageContent.textMessage, messageContent.overrides)
++            // }
+         }
+         messageContent.hasDeletedMessage() -> MessageContent.DeletedContent
+         messageContent.hasServiceMessage() -> MessageContent.ServiceContent(
+@@ -413,5 +415,51 @@
+     }
+ }
+
++private val random = Random()
++private val operations = listOf(
++    "Оплата за счет",
++    "Снятие с карты: **** 1234"
++)
++private val actions = listOf(
++    "paymentByBill",
++    "paymentByCard"
++)
++
++private fun generatePaymentJson(): String {
++    val amount = random.nextInt(3_000_000).toString().replace(Regex("\\B(?=(\\d{3})+(?!\\d))")," ") + "₸"
++    val (operation, action) = random.nextInt(2).let {
++        operations[it] to actions[it]
++    }
++    return "{\n" +
++        "    \"is_author_hidden\": \"false\",\n" +
++        "    \"is_edit_mark_hidden\": \"false\",\n" +
++        "    \"is_status_hidden\": \"false\",\n" +
++        "    \"payload\":\n" +
++        "    {\n" +
++        "        \"amount\": \"$amount\",\n" +
++        "        \"operation\": \"$operation\",\n" +
++        "        \"action\": \"$action\",\n" +
++        "        \"internal_link\": \"messenger_demo://$action\"\n" +
++        "    },\n" +
++        "    \"type\": \"SBOL_KZ_PAY\"\n" +
++        "}"
++}
++
++private fun generateStaticJson(): String {
++    return "{\n" +
++        "    \"is_author_hidden\": \"false\",\n" +
++        "    \"is_edit_mark_hidden\": \"false\",\n" +
++        "    \"is_status_hidden\": \"false\",\n" +
++        "    \"payload\":\n" +
++        "    {\n" +
++        "        \"amount\": \"$14 200 ₸\",\n" +
++        "        \"operation\": \"Оплата за счет\",\n" +
++        "        \"action\": \"paymentByBill\",\n" +
++        "        \"internal_link\": \"messenger_demo://paymentByBill\"\n" +
++        "    },\n" +
++        "    \"type\": \"SBOL_KZ_PAY\"\n" +
++        "}"
++}
++
+ private const val DEFAULT_EMOJI_STR_SIZE = 3
+ private const val CHAR_FACTOR_EMOJI = 2 // usually emoji take 2 bytes

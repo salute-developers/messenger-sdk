@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="sbol_kz_cm_icon_size">20dp</dimen>
+    <dimen name="sbol_kz_cm_icon_margin">20dp</dimen>
+
+    <dimen name="sbol_kz_cm_button_height">30dp</dimen>
+</resources>

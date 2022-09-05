@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "477683590422",
+    "project_id": "messenger-external-demo",
+    "storage_bucket": "messenger-external-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477683590422:android:745618db89fcb47b139c37",
+        "android_client_info": {
+          "package_name": "ru.sberbank.sdakit.demo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477683590422-6k33lu9skbrrdehe2kqna6ja6m1frkc4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALuA5P_zjHgynd38z3YRpybIYB2cMo5k0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477683590422-6k33lu9skbrrdehe2kqna6ja6m1frkc4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

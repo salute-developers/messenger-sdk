@@ -1,0 +1,28 @@
+Index: sdakit/companion/companion_app/src/main/java/ru/sberbank/sdakit/companion/di/dependencies/messenger/CompanionMessengerAuthWatcher.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/sdakit/companion/companion_app/src/main/java/ru/sberbank/sdakit/companion/di/dependencies/messenger/CompanionMessengerAuthWatcher.kt b/sdakit/companion/companion_app/src/main/java/ru/sberbank/sdakit/companion/di/dependencies/messenger/CompanionMessengerAuthWatcher.kt
+--- a/sdakit/companion/companion_app/src/main/java/ru/sberbank/sdakit/companion/di/dependencies/messenger/CompanionMessengerAuthWatcher.kt	(revision 2447efb7a9fd3d2c74c10f2fd15f709b06c925c8)
++++ b/sdakit/companion/companion_app/src/main/java/ru/sberbank/sdakit/companion/di/dependencies/messenger/CompanionMessengerAuthWatcher.kt	(date 1650258976690)
+@@ -13,13 +13,17 @@
+ /**
+  * @author Алексей Соколов on 16.07.2021
+  */
++@SuppressLint("CheckResult")
+ class CompanionMessengerAuthWatcher : MessengerAuthWatcher {
+     private val api by lazy { getApi(AuthApi::class.java) }
+     private val subject by lazy {
+         BehaviorSubject.create<AuthEvent>().apply {
+             api.authWatcher.onLogin
+-                .map(::Login)
+-                .subscribe(this)
++                .subscribe( {
++                    Log.d("EsaTokenLog", "CompanionMessengerAuthWatcher.onLogin EsaToken = $it")
++                }, {
++                    Log.d("EsaTokenLog", "CompanionMessengerAuthWatcher.onLogin error = $it")
++                })
+
+             api.authWatcher.onLogout
+                 .map(::Logout)

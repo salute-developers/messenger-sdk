@@ -1,0 +1,38 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="DemoAppTheme" parent="Sberdevices.Assistant.Activity.Theme.Dark">
+        <item name="colorPrimary">@color/sberdevices_color_primary</item>
+        <item name="colorPrimaryDark">@color/sberdevices_color_primary_dark</item>
+        <item name="colorAccent">@color/sberdevices_color_accent</item>
+        <item name="colorControlActivated">@color/sberdevices_companion_text_input_layout_hint</item>
+
+        <!-- На MIUI 12 перекрашиваются некоторые вьюхи с белого на черный цвет -->
+        <!-- есть такая фича Force Dark, подробнее здесь https://developer.android.com/guide/topics/ui/look-and-feel/darktheme#force-dark -->
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+
+        <item name="android:windowActivityTransitions">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+
+        <item name="textInputStyle">@style/Sberdevices_Companion_TextInputLayout</item>
+
+        <item name="sberdevices_font_family">@font/sbsans</item>
+        <item name="sberdevices_font_family_bold">@font/sbsans_bold</item>
+        <item name="sberdevices_font_family_semibold">@font/sbsans_semibold</item>
+        <item name="sberdevices_font_family_medium">@font/sbsans_medium</item>
+        <item name="sberdevices_font_family_regular">@font/sbsans_regular</item>
+
+        <item name="fontSizeTitle1">@dimen/fontSizeTitle1</item>
+        <item name="fontSizeTitle2">@dimen/fontSizeTitle2</item>
+        <item name="fontSizeHeadline">@dimen/fontSizeHeadline</item>
+        <item name="fontSizeBody">@dimen/fontSizeBody</item>
+        <item name="fontSizeSubhead">@dimen/fontSizeSubhead</item>
+        <item name="fontSizeCaption1">@dimen/fontSizeCaption1</item>
+        <item name="fontSizeCaption2">@dimen/fontSizeCaption2</item>
+        <item name="fontSizeCaption3">@dimen/fontSizeCaption3</item>
+        <item name="fontSizeCaption4">@dimen/fontSizeCaption3</item>
+    </style>
+</resources>

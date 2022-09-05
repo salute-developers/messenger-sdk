@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">MessengerDemo</string>
+
+    <string name="cmi_contacts">Контакты</string>
+    <string name="chat_video_call">Начать видеозвонок</string>
+    <string name="dialog_new_chat">Новый Чат</string>
+
+    <string name="welcome_screen_title">Messenger Demo App</string>
+    <string name="welcome_screen_subtitle">Приложение демонстрирует способ интеграции и базовые возможности SmartMessenger-а</string>
+
+    <string name="welcome_tab">Приветствие</string>
+    <string name="messenger_tab">Чаты</string>
+    <string name="more">Ещё</string>
+
+    <string name="custom_message_pay">Оплатить</string>
+
+    <string name="dialog_custom_action_title">Диалог-Действие</string>
+    <string name="dialog_custom_action_toast">Диалог Кастомное Действие - %s</string>
+    <string name="group_profile_custom_action">ГрупДейст</string>
+    <string name="group_profile_custom_toast">Group профиль Кастомное Действие - %s</string>
+    <string name="message_custom_action_title">Сообщение-Действие</string>
+    <string name="message_custom_action_toast">Сообщение Кастомное Действие - %s</string>
+    <string name="user_profile_custom_action">ПрофДейств</string>
+    <string name="user_profile_custom_toast">User профиль Кастомное Действие - %s</string>
+
+    <string name="custom_message_battery_full">Телефон заряжен</string>
+    <string name="custom_message_battery_low">Зарядите телефон</string>
+
+    <string name="bottom_picker_panel_gallery">Галерея</string>
+    <string name="bottom_picker_panel_file">Файл</string>
+</resources>

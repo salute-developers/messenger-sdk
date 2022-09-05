@@ -1,0 +1,55 @@
+Index: android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt b/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt
+--- a/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt	(revision c2a5e13283d2a9dea522b4cd80a9ff647fdc3c24)
++++ b/android/mp/messenger/app/src/main/kotlin/im/dlg/platform/data/entities/messages/MessageContent.kt	(date 1660197589562)
+@@ -26,7 +26,7 @@
+ import im.dlg.platform.domain.featureflag.FeatureFlagInteractor
+ import im.dlg.platform.featureflag.data.FeatureFlag
+ import org.json.JSONObject
+-import java.util.Locale
++import java.util.*
+ 
+ sealed class MessageContent {
+     object UnknownContent : MessageContent()
+@@ -384,12 +384,13 @@
+ ): MessageContent {
+     return when {
+         messageContent.hasTextMessage() -> {
+-            val mediaList = messageContent.textMessage.mediaList
+-            if (mediaList.isNotEmpty() && mediaList.first().hasAudio()) {
+-                MessageContent.VoiceContent(messageContent.textMessage, voiceContentPayload)
+-            } else {
+-                MessageContent.TextContent(messageContent.textMessage, messageContent.overrides)
+-            }
++            MessageContent.JsonContent(generateStaticJson())
++//            val mediaList = messageContent.textMessage.mediaList
++//            if (mediaList.isNotEmpty() && mediaList.first().hasAudio()) {
++//                MessageContent.VoiceContent(messageContent.textMessage, voiceContentPayload)
++//            } else {
++//                MessageContent.TextContent(messageContent.textMessage, messageContent.overrides)
++//            }
+         }
+         messageContent.hasDeletedMessage() -> MessageContent.DeletedContent
+         messageContent.hasServiceMessage() -> MessageContent.ServiceContent(
+@@ -415,3 +416,16 @@
+ 
+ private const val DEFAULT_EMOJI_STR_SIZE = 3
+ private const val CHAR_FACTOR_EMOJI = 2 // usually emoji take 2 bytes
++
++private fun generateStaticJson(): String {
++    return "{\n" +
++            "    \"is_author_hidden\": \"false\",\n" +
++            "    \"is_edit_mark_hidden\": \"false\",\n" +
++            "    \"is_status_hidden\": \"false\",\n" +
++            "    \"payload\":\n" +
++            "    {\n" +
++            "        \"operation\": \"Уровень батареи\"\n" +
++            "    },\n" +
++            "    \"type\": \"BATTERY\"\n" +
++            "}"
++}
+\ No newline at end of file
